@@ -38,6 +38,10 @@
             <em class="icon-logout"></em>
             </a>
         </li>
+        <!-- START lock screen-->
+        <li class="nav-item d-none d-md-block">
+            <%= link_to raw("<em class='fa fa-user-plus'></em>"), new_user_path, title:"Signup", class:"nav-link" %>
+        </li>
         <!-- END lock screen-->
     </ul>
     <!-- END Left navbar-->

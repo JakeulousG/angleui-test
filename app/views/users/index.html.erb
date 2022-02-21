@@ -1,0 +1,31 @@
+<div class="content-heading">Contacts
+   <div class="ml-auto">
+      <div class="btn-group">
+         <button class="btn btn-link" data-toggle="dropdown">
+            <em class="fa fa-ellipsis-v fa-lg"></em>
+         </button>
+         <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
+            <%= link_to raw("<em class='fa-fw fa fa-plus mr-2'></em> New User"), new_user_path, class:"dropdown-item" %>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+    <% @users.each do |user| %>
+        <div class="col-lg-4 col-sm-6">
+            <div class="card card-default">
+                <div class="card-header"></div>
+                <div class="card-body text-center">
+                    <img class="mb-2 img-fluid rounded-circle thumb64" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
+                    <h4> <%= link_to user.name, user_path(user), class:"text-muted" %> </h4>
+                    <p> <%= user.bio%> </p>
+                </div>
+                <div class="card-footer d-flex">
+                    <div class="ml-auto">
+                        <%= link_to "View", user_path(user), class:"btn btn-xs btn-secondary" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

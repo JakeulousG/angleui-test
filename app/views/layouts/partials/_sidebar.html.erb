@@ -42,10 +42,8 @@
                   </a>
                </li>
                <li class="<%= 'active' if controller?('home') %>">
-                  <a href="/users" title="Home">
-                     <em class="fas fa-users"></em>
-                     <span>Users</span>
-                  </a>
+                  <div class="badge badge-secondary float-right"><%= User.all.count %></div>
+                  <%= link_to raw("<em class='fas fa-users'></em> <span>Users</span>"), users_path, class:"", title:"Users" %>
                </li>
                <li class="<%= 'active' if controller?('home') %>">
                   <a href="/products" title="Home">
