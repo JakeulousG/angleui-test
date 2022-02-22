@@ -42,14 +42,18 @@
                   </a>
                </li>
                <li class="<%= 'active' if controller?('home') %>">
-                  <div class="badge badge-secondary float-right"><%= User.all.count %></div>
-                  <%= link_to raw("<em class='fas fa-users'></em> <span>Users</span>"), users_path, class:"", title:"Users" %>
+                  <%= link_to users_path, title:"Users" do %>
+                        <div class="badge badge-info float-right"><%= User.all.count %></div>
+                        <em class='fas fa-users'></em>
+                        <span>Users</span>
+                  <% end %>
                </li>
-               <li class="<%= 'active' if controller?('home') %>">
-                  <a href="/products" title="Home">
-                     <em class="fas fa-boxes"></em>
-                     <span>Products</span>
-                  </a>
+               <li class="<%= 'active' if controller?('products') %>">
+                  <%= link_to products_path, title:"Products"  do %>
+                        <div class="badge badge-info float-right"><%= Product.all.count %></div>
+                        <em class='fas fa-boxes'></em>
+                        <span>Products</span>
+                  <% end %>
                </li>
             </ul>
          </li>

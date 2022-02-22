@@ -23,4 +23,11 @@ User.create!(
                 bio: Faker::Quote.yoda
             )
 end
-    
+
+100.times do
+    Product.create!(product_name: Faker::Food.dish,
+                    product_description: Faker::Food.description,
+                    price: rand(1..500),
+                    quantity: rand(1..100)
+                )
+end
