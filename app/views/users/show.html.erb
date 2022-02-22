@@ -1,36 +1,32 @@
-<div class="row">
-    <div class="col-lg-4">
-            <div class="card card-default">
-                <div class="card-body text-center">
-                    <div class="py-4">
-                        <img class="img-fluid rounded-circle img-thumbnail thumb96" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
-                    </div>
-                    <h3 class="m-0 text-bold"><%= @user.name %></h3>
-                    <div class="my-3">
-                        <p><%= @user.bio %></p>
-                    </div>
-                </div>
-            </div>
+<div class="unwrap">
+    <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
+        <div class="p-4 text-center text-white">
+            <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
+            <h3 class="m-0"><%= @user.name %></h3>
+            <p><%= @user.email%></p>
+            <p><%= @user.bio %></p>
+        </div>
     </div>
-    <% if current_user == @user %>
-    <div class="col-lg-8">
-        <div class="card card-default">
-            <div class="card-header d-flex align-items-center">
-                <div class="d-flex justify-content-center col">
-                    <div class="h4 m-0 text-center">Contact Information</div>
-                </div>                
-            </div>
-            <div class="card-body">
-            <div class="row py-4 justify-content-center">
-                <div class="col-12 col-sm-10">
-                    <%= render 'form' %>
-                    <div class="text-right">
-                        <%= button_to "Delete this contact?", user_path(@user), class:"text-muted btn btn-danger text-white", method: :delete, data: { confirm: 'Are you sure?' }  %>
+    <div class="p-3">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <% if @user == current_user %>
+                            <div class="row">
+                                <%= link_to edit_user_path(@user), class: "btn btn-labeled btn-info mb-2 mx-2"  do %>
+                                    <span class="btn-label"><i class="fa fa-pen"></i>
+                                    </span>Edit User Information
+                                <% end %>
+                                <%= button_to user_path(@user), method: :delete, class: "btn btn-labeled btn-danger mb-2 mx-2"  do %>
+                                    <span class="btn-label"><i class="fa fa-trash"></i>
+                                    </span>Delete Account
+                                <% end %>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
-    <% end %>
 </div>

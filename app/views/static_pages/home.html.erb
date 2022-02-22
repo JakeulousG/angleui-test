@@ -9,7 +9,7 @@
         <div class="card bg-info-light pt-2 b0">
             <div class="px-2">
                 <em class="icon-cloud-upload fa-lg float-right"></em>
-                <div class="h2 mt-0">1700</div>
+                <div class="h2 mt-0"><%= User.all.count %></div>
                 <div class="text-uppercase">Users</div>
             </div>
             <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#23b7e5" data-chart-range-min="0" data-fill-color="#23b7e5" data-spot-color="#23b7e5" data-min-spot-color="#23b7e5" data-max-spot-color="#23b7e5" data-highlight-spot-color="#23b7e5"
@@ -21,9 +21,7 @@
       <div class="card bg-purple-light pt-2 b0">
          <div class="px-2">
             <em class="icon-globe fa-lg float-right"></em>
-            <div class="h2 mt-0">700
-               <span class="text-sm text-white">GB</span>
-            </div>
+            <div class="h2 mt-0"><%= Product.all.count %></div>
             <div class="text-uppercase">Products</div>
          </div>
          <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#7266ba" data-chart-range-min="0" data-fill-color="#7266ba" data-spot-color="#7266ba" data-min-spot-color="#7266ba" data-max-spot-color="#7266ba" data-highlight-spot-color="#7266ba"

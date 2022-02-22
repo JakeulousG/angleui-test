@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :only_loggedin_users, only: [:edit, :show, :destroy]
-  before_action :correct_user, only: [:update]
+
   
   def new
+    log_out
     @user = User.new
   end
 
@@ -26,14 +27,17 @@ class UsersController < ApplicationController
     @users = User.all.order(updated_at: :desc)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
   
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "User was successfully updated."
+      flash[:success] = "User was successfully updated."
       redirect_to users_url
     else
-      flash[:notice] = @user.errors.full_messages.to_sentence
+      flash[:warning] = @user.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)
     end
   end

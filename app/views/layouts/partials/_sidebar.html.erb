@@ -17,7 +17,7 @@
                   </div>
                   <!-- Name and Job-->
                   <div class="user-block-info">
-                     <span class="user-block-name">Hello, <%= current_user.name%></span>
+                     <span class="user-block-name">Hello, <%= link_to current_user.name, current_user %></span>
                      <span>
                         <%= button_to logout_path, method: :delete, class: "btn btn-link text-primary" do %>
                            <em class='icon-logout'></em>&nbsp;&nbsp;Logout

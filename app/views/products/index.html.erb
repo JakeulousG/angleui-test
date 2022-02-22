@@ -1,13 +1,18 @@
 <div class="content-heading">
     Products
+    <% if logged_in? %>
+        <div class="ml-auto">
+            <div class="btn-group">
+                <button class="btn btn-link" data-toggle="dropdown">
+                    <em class="fa fa-ellipsis-v fa-lg"></em>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
+                    <%= link_to raw("<em class='fa-fw fa fa-plus mr-2'></em> New Product"), new_product_path, class:"dropdown-item" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>
-<% if logged_in? %>
-<div class="row d-flex justify-content-end">
-    <%= link_to raw("<span class='btn-label'><i class='fa fa-plus'></i></span>Add New Product"),
-        new_product_path, class:"btn btn-labeled btn-success m-3"
-    %>
-</div>
-<% end %>
 <table class="table table-striped table-hover w-100" id="datatable1">
     <thead>
         <tr>

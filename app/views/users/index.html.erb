@@ -1,14 +1,4 @@
-<div class="content-heading">Contacts
-   <div class="ml-auto">
-      <div class="btn-group">
-         <button class="btn btn-link" data-toggle="dropdown">
-            <em class="fa fa-ellipsis-v fa-lg"></em>
-         </button>
-         <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
-            <%= link_to raw("<em class='fa-fw fa fa-plus mr-2'></em> New User"), new_user_path, class:"dropdown-item" %>
-         </div>
-      </div>
-   </div>
+<div class="content-heading">Users List
 </div>
 <div class="row">
     <% @users.each do |user| %>
