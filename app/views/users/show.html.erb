@@ -1,17 +1,18 @@
 <div class="row">
-   <div class="col-lg-4">
-        <div class="card card-default">
-            <div class="card-body text-center">
-                <div class="py-4">
-                    <img class="img-fluid rounded-circle img-thumbnail thumb96" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
-                </div>
-                <h3 class="m-0 text-bold"><%= @user.name %></h3>
-                <div class="my-3">
-                    <p><%= @user.bio %></p>
+    <div class="col-lg-4">
+            <div class="card card-default">
+                <div class="card-body text-center">
+                    <div class="py-4">
+                        <img class="img-fluid rounded-circle img-thumbnail thumb96" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
+                    </div>
+                    <h3 class="m-0 text-bold"><%= @user.name %></h3>
+                    <div class="my-3">
+                        <p><%= @user.bio %></p>
+                    </div>
                 </div>
             </div>
-        </div>
-   </div>
+    </div>
+    <% if current_user == @user %>
     <div class="col-lg-8">
         <div class="card card-default">
             <div class="card-header d-flex align-items-center">
@@ -31,4 +32,5 @@
             </div>
         </div>
     </div>
+    <% end %>
 </div>

@@ -1,11 +1,13 @@
 <div class="content-heading">
     Products
 </div>
+<% if logged_in? %>
 <div class="row d-flex justify-content-end">
     <%= link_to raw("<span class='btn-label'><i class='fa fa-plus'></i></span>Add New Product"),
         new_product_path, class:"btn btn-labeled btn-success m-3"
     %>
 </div>
+<% end %>
 <table class="table table-striped table-hover w-100" id="datatable1">
     <thead>
         <tr>
@@ -24,9 +26,11 @@
             <th style="width:80px;">
             <strong>Quantity</strong>
             </th>
+            <% if logged_in? %>
             <th class="text-center">
             <strong>Actions</strong>
             </th>
+            <% end %>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +41,7 @@
                 <td><%= product.product_description%></td>
                 <td><%= product.price %></td>
                 <td><%= product.quantity %></td>
+                <% if logged_in? %>
                 <td class="text-center">
                     <%= link_to raw("<em class='fa fa-eye'></em>"), product_path(product), class:"btn btn-sm btn-info" %>
                     <%= link_to raw("<em class='fa fa-pen'></em>"), edit_product_path(product), class:"btn btn-sm btn-primary" %>
@@ -44,6 +49,7 @@
                         <em class='fa fa-trash'></em>
                     <% end %>
                 </td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>

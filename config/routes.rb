@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources 'products'
   resources 'users'
+  resources 'sessions', only: [:new, :create, :destroy]
+
+  delete '/logout', to: 'sessions#destroy'
+  
   get 'static_pages/home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

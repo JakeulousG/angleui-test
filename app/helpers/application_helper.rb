@@ -1,4 +1,5 @@
 module ApplicationHelper
+    include SessionsHelper
     def controller?(*controller)
         controller.include?(params[:controller])
     end

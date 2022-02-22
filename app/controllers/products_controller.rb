@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  include SessionsHelper
+  before_action :only_loggedin_users, only: [ :new, :edit, :update, :destroy]
+
   def index
     @products = Product.all
   end
