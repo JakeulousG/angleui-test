@@ -29,7 +29,7 @@
                   <th data-priority="1">ID</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Bio</th>
+                  <th>Role</th>
                   <th>Actions</th>
                </tr>
             </thead>
@@ -39,8 +39,9 @@
                     <td><%= admin.id %></td>
                     <td><%= admin.name %></td>
                     <td><%= admin.email %></td>
-                    <td><%= admin.bio %></td>
+                    <td><%= admin.role %></td>
                     <td>
+                        <%= link_to "Edit", edit_admin_registration_path(admin), class: "btn btn-info" %>
                         <button class="btn btn-danger">
                             Delete
                         </button>

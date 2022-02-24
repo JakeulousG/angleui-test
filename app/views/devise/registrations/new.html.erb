@@ -68,6 +68,13 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <%= f.label :role, class: "text-muted" %>
+                <%= f.select :role, options_for_select([
+                                        Admin.roles.keys
+                                    ], selected: f.object.role), {}, class: "custom-select"
+                                %>
+            </div>
             <%= f.submit label: "Create Account", class:"btn btn-block btn-primary mt-3" %>
         <% end %>
         

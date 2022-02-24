@@ -11,7 +11,8 @@ Admin.create!(
     email:"admin@admin.com",
     password: "password",
     password_confirmation: "password",
-    bio: "This is the admin account"
+    bio: "This is the admin account",
+    role: "Super Admin"
 )
 
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins,
-    controllers: {
-                    :registrations => "registrations",
+  devise_for :admins, controllers: {
+                    registrations: "admins/registrations",
+                    sessions: "admins/sessions"
                   }
   as :admin do
     get "/register", to: "registrations#new", as: "register"

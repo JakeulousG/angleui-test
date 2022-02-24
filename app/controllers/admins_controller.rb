@@ -1,7 +1,6 @@
-class AdminsController < Devise::RegistrationsController
+class AdminsController < ApplicationController
     include ApplicationHelper
     before_action :is_loggedin?
-    skip_before_action :require_no_authentication, only: [:index]
 
     def show
         @admin = Admin.find(params[:id])
