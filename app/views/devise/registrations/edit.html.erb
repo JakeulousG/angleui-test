@@ -81,6 +81,7 @@
                     </div>
                 </div>
             </div>
+            <% if current_admin.role == "Super Admin" %>
             <div class="form-group">
                 <%= f.label :role, class: "text-muted" %>
                 <%= f.select :role, options_for_select([
@@ -90,6 +91,7 @@
                                     ], selected: f.object.role), {}, class: "custom-select"
                                 %>
             </div>
+            <% end %>
             <%= f.submit label: "Create Account", class:"btn btn-block btn-primary mt-3" %>
         <% end %>
         

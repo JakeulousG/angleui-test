@@ -69,10 +69,10 @@
                      <ul id="Admin" class="sidebar-nav sidebar-subnav collapse">
                         <li class="sidebar-subnav-header">Admins</li>
                         <li>
-                           <%= link_to raw("<span>Admin List</span>"), admins_path, title: "Admin List" %>
+                           <%= link_to raw("<span>Admin List</span>"), admin_index_path, title: "Admin List" %>
                         </li>
                         <li>
-                           <%= link_to raw("<span>Admin Profile</span>"), admins_path(current_admin), title: "Admins Profile" %>
+                           <%= link_to raw("<span>Admin Profile</span>"), admin_path(current_admin), title: "Admins Profile" %>
                         </li>
                         <li>
                            <a>
@@ -92,12 +92,6 @@
                <a href="/admins/sign_in" title="Admin Login">
                   <em class="fa fa-sign-in-alt"></em>
                   <span>Admin Login</span>
-               </a>
-            </li>
-            <li class="<%= 'active' if controller?('devise/registrations') %>">
-               <a href="/admins/sign_up" title="Admin Register">
-               <em class="fa fa-user-plus"></em>
-                  <span>Admin Register</span>
                </a>
             </li>
          <% end %>

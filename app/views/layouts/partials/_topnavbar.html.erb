@@ -34,11 +34,6 @@
         </li>
         <!-- END User avatar toggle-->
         <% else %>
-        <!-- START new user screen-->
-        <li class="nav-item d-none d-md-block">
-            <%= link_to raw("<em class='fa fa-user-plus'></em>"), new_admin_registration_path, title:"Signup", class:"nav-link" %>
-        </li>
-        <!-- END new user screen-->
         <!-- START login screen-->
         <li class="nav-item d-none d-md-block">
             <%= link_to raw("<em class='fa fa-sign-in-alt'></em>"), new_admin_session_path, title:"Login", class:"nav-link" %>

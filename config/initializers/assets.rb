@@ -22,5 +22,5 @@ Rails.application.config.assets.precompile += %w(
     static_pages.css
     users.css
     products.css
-    admins.css
+    admin.css
 )

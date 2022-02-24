@@ -71,7 +71,9 @@
             <div class="form-group">
                 <%= f.label :role, class: "text-muted" %>
                 <%= f.select :role, options_for_select([
-                                        Admin.roles.keys
+                                        ["Super Admin"],
+                                        ["Admin"],
+                                        ["Staff"]
                                     ], selected: f.object.role), {}, class: "custom-select"
                                 %>
             </div>

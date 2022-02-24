@@ -3,15 +3,14 @@ Rails.application.routes.draw do
                     registrations: "admins/registrations",
                     sessions: "admins/sessions"
                   }
-  as :admin do
-    get "/register", to: "registrations#new", as: "register"
-  end
+                  
+  # admins pages
+  resources 'admin', only: [:show, :index]
+
   resources 'products'
   resources 'users'
   # resources 'sessions', only: [:new, :create, :destroy]
   
-  # admins pages
-  resources 'admins', only: [:show, :index, :create]
 
   delete '/logout', to: 'sessions#destroy'
   

@@ -3,7 +3,7 @@
     Admins
     <small>List of all Admin Accounts</small>
     </div>
-    <% if admin_signed_in? %>
+    <% if admin_signed_in?  && current_admin.role == "Super Admin" %>
         <div class="ml-auto">
             <div class="btn-group">
                 <button class="btn btn-link" data-toggle="dropdown">
@@ -40,11 +40,12 @@
                     <td><%= admin.name %></td>
                     <td><%= admin.email %></td>
                     <td><%= admin.role %></td>
-                    <td>
-                        <%= link_to "Edit", edit_admin_registration_path(admin), class: "btn btn-info" %>
-                        <button class="btn btn-danger">
-                            Delete
-                        </button>
+                    <td> 
+                        <%= link_to "View", admin_path(admin),class:"btn btn-primary"%>
+                        <% if current_admin.role == "Super Admin"  || current_admin == admin%>
+                           <%= link_to "Edit", edit_admin_registration_path(admin), class: "btn btn-info" %>
+                           <%= link_to "Delete", cancel_admin_registration_path(admin), class: "btn btn-danger", method: :delete %>
+                        <% end %>
                     </td>
                 </tr>
                <% end %>
@@ -66,10 +67,6 @@
              </div>
              <div class="modal-body">
                 <%= render 'form' %>
-             </div>
-             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="button">Save changes</button>
              </div>
           </div>
        </div>
