@@ -14,6 +14,7 @@ gem 'pg'
 gem 'thin'
 
 gem 'faker'
+gem 'devise'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

@@ -18,4 +18,9 @@ Rails.application.config.assets.precompile += %w( x-editable/dist/bootstrap3-edi
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w( static_pages.css users.css products.css sessions.css)
+Rails.application.config.assets.precompile += %w( 
+    static_pages.css
+    users.css
+    products.css
+    admins.css
+)

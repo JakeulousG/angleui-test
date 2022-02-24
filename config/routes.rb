@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admins,
+    controllers: {
+                    :registrations => "registrations",
+                  }
+  as :admin do
+    get "/register", to: "registrations#new", as: "register"
+  end
   resources 'products'
   resources 'users'
-  resources 'sessions', only: [:new, :create, :destroy]
+  # resources 'sessions', only: [:new, :create, :destroy]
+  
+  # admins pages
+  resources 'admins', only: [:show, :index, :create]
 
   delete '/logout', to: 'sessions#destroy'
   

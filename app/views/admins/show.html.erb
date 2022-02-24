@@ -2,9 +2,9 @@
     <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
         <div class="p-4 text-center text-white">
             <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
-            <h3 class="m-0"><%= @user.name %></h3>
-            <p><%= @user.email%></p>
-            <p><%= @user.bio %></p>
+            <h3 class="m-0"><%= @admin.name %></h3>
+            <p><%= @admin.email%></p>
+            <p><%= @admin.bio %></p>
         </div>
     </div>
     <div class="p-3">
@@ -12,13 +12,13 @@
             <div class="col-xl-12">
                 <div class="card card-default">
                     <div class="card-body">
-                        <% if @user == current_admin %>
+                        <% if @admin == current_admin %>
                             <div class="row">
-                                <%= link_to edit_user_path(@user), class: "btn btn-labeled btn-info mb-2 mx-2"  do %>
+                                <%= link_to edit_admin_registration_path(@admin), class: "btn btn-labeled btn-info mb-2 mx-2"  do %>
                                     <span class="btn-label"><i class="fa fa-pen"></i>
-                                    </span>Edit User Information
+                                    </span>Edit Admin Information
                                 <% end %>
-                                <%= button_to user_path(@user), method: :delete, class: "btn btn-labeled btn-danger mb-2 mx-2"  do %>
+                                <%= button_to admin_path(@admin), method: :delete, class: "btn btn-labeled btn-danger mb-2 mx-2"  do %>
                                     <span class="btn-label"><i class="fa fa-trash"></i>
                                     </span>Delete Account
                                 <% end %>

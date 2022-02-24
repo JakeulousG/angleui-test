@@ -25,7 +25,7 @@
             </a>
         </li>
         <!-- START User avatar toggle-->
-        <% if logged_in? %>
+        <% if admin_signed_in? %>
         <li class="nav-item d-none d-md-block">
             <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
             <a class="nav-link" id="user-block-toggle" href="#user-block" data-toggle="collapse">
@@ -36,12 +36,12 @@
         <% else %>
         <!-- START new user screen-->
         <li class="nav-item d-none d-md-block">
-            <%= link_to raw("<em class='fa fa-user-plus'></em>"), new_user_path, title:"Signup", class:"nav-link" %>
+            <%= link_to raw("<em class='fa fa-user-plus'></em>"), new_admin_registration_path, title:"Signup", class:"nav-link" %>
         </li>
         <!-- END new user screen-->
         <!-- START login screen-->
         <li class="nav-item d-none d-md-block">
-            <%= link_to raw("<em class='fa fa-sign-in-alt'></em>"), new_session_path, title:"Login", class:"nav-link" %>
+            <%= link_to raw("<em class='fa fa-sign-in-alt'></em>"), new_admin_session_path, title:"Login", class:"nav-link" %>
         </li>
         <% end %>
         <!-- END login screen-->
@@ -49,18 +49,21 @@
     <!-- END Left navbar-->
     <!-- START Right Navbar-->
     <ul class="navbar-nav flex-row">
+        <% if admin_signed_in? %>
         <!-- Search icon-->
         <li class="nav-item">
             <a class="nav-link" href="#" data-search-open="">
             <em class="icon-magnifier"></em>
             </a>
         </li>
+        <% end %>
         <!-- Fullscreen (only desktops)-->
         <li class="nav-item d-none d-md-block">
             <a class="nav-link" href="#" data-toggle-fullscreen="">
             <em class="fa fa-expand"></em>
             </a>
         </li>
+        <% if admin_signed_in? %>
         <!-- START Alert menu-->
         <li class="nav-item dropdown dropdown-list">
             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-toggle="dropdown">
@@ -121,6 +124,7 @@
             </div>
             <!-- END Dropdown menu-->
         </li>
+        <% end %>
         <!-- END Alert menu-->
         <!-- START Offsidebar button-->
         <li class="nav-item">

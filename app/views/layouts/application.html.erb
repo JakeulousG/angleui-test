@@ -9,7 +9,7 @@
    <title>Angle - Bootstrap Admin Template</title>
 
    <!-- =============== VIEW STYLES ===============-->
-   <%= stylesheet_link_tag params[:controller] %>
+   <%= stylesheet_link_tag params[:controller] unless devise_controller? %>
    <!-- =============== APP STYLES ===============-->
    <%= stylesheet_link_tag 'application', media: 'all', id: "maincss" %>
 
@@ -28,7 +28,7 @@
       <!-- sidebar-->
       <aside class="aside-container">
          <%= render partial: "layouts/partials/sidebar" %>
-      </aside>
+      </aside>   
       <!-- offsidebar-->
       <aside class="offsidebar d-none">
          <%= render partial: "layouts/partials/offsidebar" %>

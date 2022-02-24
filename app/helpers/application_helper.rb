@@ -1,5 +1,4 @@
 module ApplicationHelper
-    include SessionsHelper
     def controller?(*controller)
         controller.include?(params[:controller])
     end
@@ -32,5 +31,11 @@ module ApplicationHelper
 
     def pack_exists?(filename)
         File.exists?(File.join(Rails.root, 'app', 'javascript', 'packs', "#{filename}.js"))
+    end
+
+    def is_loggedin?
+        if !authenticate_admin!
+            redirect_to new_admin_session_path
+        end
     end
 end
