@@ -43,6 +43,8 @@ module.exports = function(api) {
       '@babel/plugin-transform-destructuring',
       [
         '@babel/plugin-proposal-class-properties',
+        "@babel/plugin-proposal-private-methods",
+        "@babel/plugin-proposal-private-property-in-object ",
         {
           loose: true
         }
@@ -66,10 +68,6 @@ module.exports = function(api) {
         {
           async: false
         }
-      ],
-      [
-        "@babel/plugin-proposal-private-methods",
-        { "loose": true }
       ]
     ].filter(Boolean)
   }
