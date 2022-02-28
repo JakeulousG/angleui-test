@@ -13,6 +13,7 @@
         "postinstall": "npm run modernizr"
     },
     "dependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
         "@fortawesome/fontawesome-free": "5.15.3",
         "@fullcalendar/bootstrap": "4.4.2",
         "@fullcalendar/core": "4.4.2",
