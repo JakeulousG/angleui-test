@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :is_staff?, only: [:edit, :update, :destroy]
   
   def new
-    log_out
     @user = User.new
   end
 
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash[:warning] = @user.errors.full_messages.to_sentence
-      render 'new'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.order(updated_at: :desc)
+    @user = User.new
   end
 
   def edit
