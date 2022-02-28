@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   include ApplicationHelper
-  before_action :only_loggedin_users, only: [ :new, :edit, :update, :destroy]
   before_action :is_loggedin?
   
   def index
     @products = Product.all
+    @product = Product.new
   end
 
   def show
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:success] = "Product Added Successfully!"
+      flash[:notice] = "Product Added Successfully!"
       redirect_to products_url
     else
       flash[:warning] = @product.errors.full_messages.to_sentence

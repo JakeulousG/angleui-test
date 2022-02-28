@@ -7,7 +7,9 @@
                     <em class="fa fa-ellipsis-v fa-lg"></em>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
-                    <%= link_to raw("<em class='fa-fw fa fa-plus mr-2'></em> New Product"), new_product_path, class:"dropdown-item" %>
+                    <a href="" class="dropdown-item" data-toggle="modal" data-target="#myModalLarge">
+                        <em class='fa-fw fa fa-plus mr-2'></em> Add New Product
+                    </a>
                 </div>
             </div>
         </div>
@@ -59,3 +61,23 @@
         <% end %>
     </tbody>
 </table>
+
+
+<% content_for :body_area do %>
+    <!-- Modal Large-->
+    <div class="modal fade" id="myModalLarge" tabindex="-1" role="dialog" aria-labelledby="myModalLabelLarge" aria-hidden="true">
+       <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabelLarge">Add new Product</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+             </div>
+             <div class="modal-body">
+                <%= render 'form' %>
+             </div>
+          </div>
+       </div>
+    </div>
+<% end %>
