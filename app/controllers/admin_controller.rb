@@ -13,6 +13,10 @@ class AdminController < ApplicationController
     
     def edit
         @admin = Admin.find(params[:id])
+        if @admin.role == "Super Admin"
+            flash[:warning] = "Unauhtorized Access!"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
     def update
