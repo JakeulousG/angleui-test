@@ -7,14 +7,31 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
+    name: "Super Admin Account",
+    email:"superadmin@admin.com",
+    password: "password",
+    password_confirmation: "password",
+    bio: "This is the Super Admin account",
+    role: "Super Admin"
+)
+
+Admin.create!(
     name: "Admin Account",
     email:"admin@admin.com",
     password: "password",
     password_confirmation: "password",
-    bio: "This is the admin account",
-    role: "Super Admin"
+    bio: "This is the Admin account",
+    role: "Admin"
 )
 
+Admin.create!(
+    name: "Staff Account",
+    email:"staff@admin.com",
+    password: "password",
+    password_confirmation: "password",
+    bio: "This is the Staff account",
+    role: "Staff"
+)
 
 50.times do |n|
     User.create!(name: Faker::Name.name,

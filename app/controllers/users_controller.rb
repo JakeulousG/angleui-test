@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :admin_signed_in?, only: [:edit, :show, :destroy]
   before_action :is_loggedin?
+  before_action :is_staff?, only: [:edit, :update, :destroy]
   
   def new
     log_out

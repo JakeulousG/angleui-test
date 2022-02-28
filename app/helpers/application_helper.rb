@@ -38,4 +38,11 @@ module ApplicationHelper
             redirect_to new_admin_session_path
         end
     end
+
+    def is_staff?
+        if current_admin.role == "Staff"
+            flash[:warning] = "Access Unauthorized!"
+            redirect_back(fallback_location: root_path)
+        end
+    end
 end

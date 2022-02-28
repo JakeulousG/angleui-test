@@ -11,6 +11,7 @@ import initDropzone from './angle/modules/forms/upload';
 import initWizard from './angle/modules/forms/wizard';
 import initXEditable from './angle/modules/forms/xeditable';
 import './angle/modules/forms/validation';
+import initDatatables from './angle/modules/tables/datatable';
 
 $(function() {
     initColorPicker();
@@ -20,4 +21,5 @@ $(function() {
     initDropzone();
     initWizard();
     initXEditable();
+    initDatatables();
 });

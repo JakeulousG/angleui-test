@@ -1,21 +1,37 @@
 <div class="content-heading">Users List
 </div>
-<div class="row">
-    <% @users.each do |user| %>
-        <div class="col-lg-4 col-sm-6">
-            <div class="card card-default">
-                <div class="card-header"></div>
-                <div class="card-body text-center">
-                    <img class="mb-2 img-fluid rounded-circle thumb64" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
-                    <h4> <%= link_to user.name, user_path(user), class:"text-muted" %> </h4>
-                    <p> <%= user.bio%> </p>
-                </div>
-                <div class="card-footer d-flex">
-                    <div class="ml-auto">
-                        <%= link_to "View", user_path(user), class:"btn btn-xs btn-secondary" %>
-                    </div>
-                </div>
-            </div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable1">
+                <thead>
+                <tr>
+                    <th data-priority="1">ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Bio</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.bio %></td>
+                        <td> 
+                            <%= link_to "View", user_path(user),class:"btn btn-primary"%>
+                            <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin"%>
+                            <%= link_to "Edit", edit_user_path(user), class: "btn btn-info" %>
+                            <%= link_to "Delete", user_path(user), class: "btn btn-danger", method: :delete %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
         </div>
-    <% end %>
+    </div>
 </div>

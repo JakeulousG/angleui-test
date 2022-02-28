@@ -63,6 +63,7 @@
                <% if admin_signed_in? %>
                   <li class="<%= 'active' if controller?('admins') %>">
                      <a href="#Admin" title="Admins" data-toggle="collapse">
+                     <div class="badge badge-info float-right"><%= Admin.all.count %></div>
                         <em class="fa fa-crown"></em>
                         <span>Admins</span>
                      </a>
