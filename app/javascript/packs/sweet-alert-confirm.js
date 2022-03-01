@@ -5,7 +5,7 @@ window.Swal = Swal;
 
 // Behavior after click to confirm button
 const confirmed = (element, result) => {
-    console.log(result.value);
+    console.log(result);
     console.log(element);
     if (result.value) {
         if (!!element.getAttribute('data-remote')) {
@@ -49,14 +49,15 @@ const showConfirmationDialog = (element) => {
         title:             message || 'Are you sure?',
         text:              text || '',
         icon:              'warning',
-        buttons: true
-    }).then(result => {
-        if (result.value == true){
+        buttons: {no: "No", yes: "Yes"},
+    }).then((result) => {
+        switch(result){
+        case "yes" :
+            console.log(result)
             confirmed(element, result);
-        } else {
+        case "no" :
             alert("Not deleted");
         }
-        
     });
 };
 
