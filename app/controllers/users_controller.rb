@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "User was successfully updated."
-      redirect_to users_url
+      redirect_back(fallback_location: root_path)
     else
       flash[:warning] = @user.errors.full_messages.to_sentence
       redirect_back(fallback_location: root_path)

@@ -4,24 +4,38 @@
             <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
             <h3 class="m-0"><%= @user.name %></h3>
             <p><%= @user.email%></p>
-            <p><%= @user.bio %></p>
         </div>
     </div>
     <div class="p-3">
         <div class="row">
-            <div class="col-xl-12">
+            <div class="col-lg-8">
+                <div class="card card-default mb-3">
+                    <div class="card-header">User Information</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Bio</h5>
+                        <p class="card-text"><%= @user.bio %></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
                 <div class="card card-default">
                     <div class="card-body">
-                        <% if @user == current_admin %>
+                        <% if @user == current_admin || current_admin.role == "Super Admin" || current_admin.role == "Admin"  %>
                             <div class="row">
-                                <%= link_to edit_user_path(@user), class: "btn btn-labeled btn-info mb-2 mx-2"  do %>
-                                    <span class="btn-label"><i class="fa fa-pen"></i>
-                                    </span>Edit User Information
-                                <% end %>
-                                <%= button_to user_path(@user), method: :delete, class: "btn btn-labeled btn-danger mb-2 mx-2"  do %>
-                                    <span class="btn-label"><i class="fa fa-trash"></i>
-                                    </span>Delete Account
-                                <% end %>
+                                <div class="col-6">
+                                    <%= link_to edit_user_path(@user), class: "btn btn-labeled btn-info mb-2 mx-2 "  do %>
+                                        <span class="btn-label"><i class="fa fa-pen"></i>
+                                        </span>Edit User
+                                    <% end %>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <%= link_to raw("<span class=btn-label><i class=fa fa-trash></i></span>Delete User"),
+                                        user_path(@user), class: "btn btn-labeled btn-danger mb-2 mx-2",
+                                        method: :delete, data: { confirm: 'Are you sure?' }
+                                    %>
+                                </div>
                             </div>
                         <% end %>
                     </div>

@@ -25,19 +25,14 @@
             <strong>Produce Name</strong>
             </th>
             <th>
-            <strong>Product Desciription</strong>
-            </th>
-            <th>
             <strong>Price</strong>
             </th>
             <th style="width:80px;">
             <strong>Quantity</strong>
             </th>
-            <% if logged_in? %>
             <th class="text-center">
             <strong>Actions</strong>
             </th>
-            <% end %>
         </tr>
     </thead>
     <tbody>
@@ -45,18 +40,13 @@
             <tr>
                 <td><%= product.id %></td>
                 <td><%= product.product_name %></td>
-                <td><%= product.product_description%></td>
                 <td><%= product.price %></td>
                 <td><%= product.quantity %></td>
-                <% if logged_in? %>
                 <td class="text-center">
-                    <%= link_to raw("<em class='fa fa-eye'></em>"), product_path(product), class:"btn btn-sm btn-info" %>
-                    <%= link_to raw("<em class='fa fa-pen'></em>"), edit_product_path(product), class:"btn btn-sm btn-primary" %>
-                    <%= button_to product_path(product), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' }  do %>
-                        <em class='fa fa-trash'></em>
-                    <% end %>
+                    <%= link_to raw("<em class='fa fa-eye'></em> View"), product_path(product), class:"btn btn-sm btn-info" %>
+                    <%= link_to raw("<em class='fa fa-pen'></em> Edit"), edit_product_path(product), class:"btn btn-sm btn-primary" %>
+                    <%= link_to raw("<em class='fa fa-trash'></em> Delete"), product_path(product), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
-                <% end %>
             </tr>
         <% end %>
     </tbody>

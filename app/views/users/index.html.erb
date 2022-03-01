@@ -23,7 +23,6 @@
                     <th data-priority="1">ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Bio</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -33,12 +32,11 @@
                         <td><%= user.id %></td>
                         <td><%= user.name %></td>
                         <td><%= user.email %></td>
-                        <td><%= user.bio %></td>
                         <td> 
                             <%= link_to "View", user_path(user),class:"btn btn-primary"%>
                             <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin"%>
                             <%= link_to "Edit", edit_user_path(user), class: "btn btn-info" %>
-                            <%= link_to "Delete", user_path(user), class: "btn btn-danger", method: :delete %>
+                            <%= link_to "Delete", user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }  %>
                             <% end %>
                         </td>
                     </tr>

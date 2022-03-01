@@ -5,7 +5,7 @@
 
 require("modernizr/modernizr.custom.js");
 
-// require("@rails/ujs").start()
+require("@rails/ujs").start()
 // //require("turbolinks").start()
 // require("@rails/activestorage").start()
 // require("channels")
@@ -15,6 +15,7 @@ import 'bootstrap';
 
 import appInit from './angle/app.init.js';
 document.addEventListener('DOMContentLoaded', appInit);
+import "./sweet-alert-confirm";
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -22,3 +23,12 @@ document.addEventListener('DOMContentLoaded', appInit);
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(function(){
+    $.ajaxSetup({
+      beforeSend: function( xhr ) {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+      }
+    });
+  });
