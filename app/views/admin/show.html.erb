@@ -1,7 +1,16 @@
 <div class="unwrap">
-    <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
+    <% if @cover_photo.attached? %>
+        <div style="background-image: url(<%= url_for(@admin.avatar) %>)" class="bg-cover">
+    <% else %>
+        <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
+    <% end %>
+
         <div class="p-4 text-center text-white">
-            <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
+            <% if @avatar.attached? %>
+                <%= image_tag @avatar, class:"img-thumbnail rounded-circle thumb128"%>
+            <% else %>
+                <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
+            <% end %>
             <h3 class="m-0"><%= @admin.name %></h3>
             <p><%= @admin.email%></p>
         </div>
@@ -25,7 +34,7 @@
                         <% if @admin == current_admin %>
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-center">
-                                    <%= link_to "Edit Admin", edit_admin_registration_path(@admin), class: "btn btn-pill-left btn-info" %>
+                                    <%= link_to "Edit Admin", edit_admin_path(@admin), class: "btn btn-pill-left btn-info" %>
                                     <%= link_to "Delete Admin", admin_path(@admin), class: "btn btn-pill-right btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' } %>
                                 </div>
                             </div>

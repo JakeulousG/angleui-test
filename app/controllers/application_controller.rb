@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   end
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :bio, :role])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :bio, :role, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :bio, :role, :avatar, :cover_photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :bio, :role, :password, :password_confirmation, :avatar, :cover_photo])
   end
 
   def after_sign_out_path_for(resource)

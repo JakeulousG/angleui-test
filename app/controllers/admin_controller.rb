@@ -4,6 +4,8 @@ class AdminController < ApplicationController
 
     def show
         @admin = Admin.find(params[:id])
+        @avatar = @admin.avatar
+        @cover_photo = @admin.cover_photo
     end
 
     def index
@@ -16,15 +18,15 @@ class AdminController < ApplicationController
         if @admin.save
             flash[:notice] = "New Admin User Added Successfully!"
             redirect_back(fallback_location: root_path)
-          else
+        else
             flash[:warning] = @admin.errors.full_messages.to_sentence
             redirect_back(fallback_location: root_path)
-          end
+        end
     end
     
     def edit
         @admin = Admin.find(params[:id])
-        if @admin.role == "Super Admin"
+        if @admin.role == "Staff"
             flash[:warning] = "Unauhtorized Access!"
             redirect_back(fallback_location: root_path)
         end
@@ -48,12 +50,12 @@ class AdminController < ApplicationController
 
     protected
     def admin_params
-        params.require(:admin).permit(:name, :email, :bio)
+        params.require(:admin).permit(:name, :email, :bio, :avatar, :cover_photo)
     end
     def super_admin_params
-        params.require(:admin).permit(:name, :email, :bio, :role)
+        params.require(:admin).permit(:name, :email, :bio, :role, :avatar, :cover_photo)
     end
     def new_admin_arams
-        params.require(:admin).permit(:name, :email, :bio, :role, :password, :password_confirmation)
+        params.require(:admin).permit(:name, :email, :bio, :role, :password, :password_confirmation, :avatar, :cover_photo)
     end
 end

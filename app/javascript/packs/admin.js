@@ -15,7 +15,6 @@ import initBootgrid from './angle/modules/tables/bootgrid';
 import initDatatables from './angle/modules/tables/datatable';
 import initTableCheckAll from './angle/modules/common/table-checkall.js';
 
-
 $(function() {
     initColorPicker();
     initFormsDemo();
