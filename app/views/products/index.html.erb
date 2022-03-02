@@ -21,25 +21,15 @@
             <table class="table table-striped table-hover w-100" id="datatable1">
                 <thead>
                     <tr>
-                        <th data-priority="1">
-                        <strong>ID</strong>
-                        </th>
-                        <th>
-                        <strong>Produce Name</strong>
-                        </th>
-                        <th>
-                        <strong>Price</strong>
-                        </th>
-                        <th style="width:80px;">
-                        <strong>Quantity</strong>
-                        </th>
-                        <th class="text-center">
-                        <strong>Actions</strong>
-                        </th>
+                        <th data-priority="1">ID</th>
+                        <th>Produce Name</th>
+                        <th>Price</th>
+                        <th style="width:80px;">Quantity</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                 </thead>
-                <% @products.each do |product| %>
-                    <tbody id="deleteProducts<%= product.id %>">
+                <tbody>
+                    <% @products.each do |product| %>
                         <tr>
                             <td><%= product.id %></td>
                             <td><%= product.product_name %></td>
@@ -51,8 +41,8 @@
                                 <%= link_to raw("<em class='fa fa-trash'></em> Delete"), product_path(product), class:"btn btn-sm btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' } %>
                             </td>
                         </tr>
-                    </tbody>
-                <% end %>
+                    <% end %>
+                </tbody>
             </table>
         </div>
     </div>
