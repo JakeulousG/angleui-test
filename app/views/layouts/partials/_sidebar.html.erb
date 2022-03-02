@@ -46,7 +46,7 @@
                      <span>Home</span>
                   </a>
                </li>
-               <li class="<%= 'active' if controller?('home') %>">
+               <li class="<%= 'active' if controller?('users') %>">
                   <%= link_to users_path, title:"Users" do %>
                         <div class="badge badge-info float-right"><%= User.all.count %></div>
                         <em class='fas fa-users'></em>
@@ -61,7 +61,7 @@
                   <% end %>
                </li>
                <% if admin_signed_in? %>
-                  <li class="<%= 'active' if controller?('admins') %>">
+                  <li class="<%= 'active' if controller?('admin') %>">
                      <a href="#Admin" title="Admins" data-toggle="collapse">
                      <div class="badge badge-info float-right"><%= Admin.all.count %></div>
                         <em class="fa fa-crown"></em>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                   }
                   
   # admins pages
-  resources 'admin', only: [:show, :index, :edit, :update]
+  resources 'admin'
 
   resources 'products', except: [:new]
   resources 'users'

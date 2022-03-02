@@ -35,8 +35,8 @@
             </th>
         </tr>
     </thead>
-    <tbody>
-        <% @products.each do |product| %>
+    <% @products.each do |product| %>
+        <tbody id="deleteProducts<%= product.id %>">
             <tr>
                 <td><%= product.id %></td>
                 <td><%= product.product_name %></td>
@@ -45,11 +45,11 @@
                 <td class="text-center">
                     <%= link_to raw("<em class='fa fa-eye'></em> View"), product_path(product), class:"btn btn-sm btn-info" %>
                     <%= link_to raw("<em class='fa fa-pen'></em> Edit"), edit_product_path(product), class:"btn btn-sm btn-primary" %>
-                    <%= link_to raw("<em class='fa fa-trash'></em> Delete"), product_path(product), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to raw("<em class='fa fa-trash'></em> Delete"), product_path(product), class:"btn btn-sm btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' } %>
                 </td>
             </tr>
-        <% end %>
-    </tbody>
+        </tbody>
+    <% end %>
 </table>
 
 

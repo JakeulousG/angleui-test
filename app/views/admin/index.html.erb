@@ -50,7 +50,7 @@
                            <% else %>
                               <%= link_to "Edit", edit_admin_path(admin), class: "btn btn-info" %>
                            <% end %>
-                           <%= link_to "Delete", cancel_admin_registration_path(admin), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                           <%= link_to "Delete", admin_path(admin), class: "btn btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' }  %>
                         <% end %>
                     </td>
                 </tr>

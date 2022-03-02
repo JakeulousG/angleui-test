@@ -24,18 +24,9 @@
                     <div class="card-body">
                         <% if @admin == current_admin %>
                             <div class="row">
-                                <div class="col-6">
-                                    <%= link_to edit_admin_registration_path(@admin), class: "btn btn-labeled btn-info mb-2 mx-2"  do %>
-                                        <span class="btn-label"><i class="fa fa-pen"></i>
-                                        </span>Edit Admin 
-                                    <% end %>
-                                </div>
-
-                                <div class="col-6">
-                                    <%= link_to  admin_registration_path(@admin), class: "btn btn-labeled btn-danger mb-2 mx-1", data: { confirm_swal: '', remote: true, method: 'DELETE' }  do %>
-                                        <span class="btn-label"><i class="fa fa-trash"></i>
-                                        </span>Delete Admin
-                                    <% end %>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <%= link_to "Edit Admin", edit_admin_registration_path(@admin), class: "btn btn-pill-left btn-info" %>
+                                    <%= link_to "Delete Admin", admin_path(@admin), class: "btn btn-pill-right btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' } %>
                                 </div>
                             </div>
                         <% end %>

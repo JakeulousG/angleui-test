@@ -44,9 +44,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:warning] = "User deleted!"
-    redirect_to root_url
+    @user = User.find(params[:id]).destroy
+    render :json => @user
   end
 
   private

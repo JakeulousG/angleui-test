@@ -10,6 +10,17 @@ class AdminController < ApplicationController
         @admins = Admin.all
         @admin = Admin.new
     end
+
+    def create
+        @admin = Admin.new(new_admin_arams)
+        if @admin.save
+            flash[:notice] = "New Admin User Added Successfully!"
+            redirect_back(fallback_location: root_path)
+          else
+            flash[:warning] = @admin.errors.full_messages.to_sentence
+            redirect_back(fallback_location: root_path)
+          end
+    end
     
     def edit
         @admin = Admin.find(params[:id])
@@ -30,11 +41,19 @@ class AdminController < ApplicationController
         end
     end
 
+    def destroy
+        @admin = Admin.find(params[:id]).destroy
+        render :json => @admin
+    end
+
     protected
     def admin_params
         params.require(:admin).permit(:name, :email, :bio)
     end
     def super_admin_params
         params.require(:admin).permit(:name, :email, :bio, :role)
+    end
+    def new_admin_arams
+        params.require(:admin).permit(:name, :email, :bio, :role, :password, :password_confirmation)
     end
 end

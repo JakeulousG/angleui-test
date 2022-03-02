@@ -36,7 +36,7 @@
                             <%= link_to "View", user_path(user),class:"btn btn-primary"%>
                             <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin"%>
                             <%= link_to "Edit", edit_user_path(user), class: "btn btn-info" %>
-                            <%= link_to "Delete", user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }  %>
+                            <%= link_to "Delete", user_path(user), class: "btn btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' }   %>
                             <% end %>
                         </td>
                     </tr>

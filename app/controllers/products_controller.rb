@@ -42,9 +42,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
-    flash[:warning] = "Product deleted!"
-    redirect_back(fallback_location: root_path)
+    @product = Product.find(params[:id]).destroy
+    render :json => @product
   end
 
   private

@@ -21,19 +21,13 @@
             <div class="col-lg-4">
                 <div class="card card-default">
                     <div class="card-body">
-                        <% if @user == current_admin || current_admin.role == "Super Admin" || current_admin.role == "Admin"  %>
+                        <% if current_admin.role == "Super Admin" || current_admin.role == "Admin"  %>
                             <div class="row">
-                                <div class="col-6">
-                                    <%= link_to edit_user_path(@user), class: "btn btn-labeled btn-info mb-2 mx-2 "  do %>
-                                        <span class="btn-label"><i class="fa fa-pen"></i>
-                                        </span>Edit User
-                                    <% end %>
-                                </div>
-                                
-                                <div class="col-6">
-                                    <%= link_to raw("<span class=btn-label><i class=fa fa-trash></i></span>Delete User"),
-                                        user_path(@user), class: "btn btn-labeled btn-danger mb-2 mx-2",
-                                        method: :delete, data: { confirm: 'Are you sure?' }
+                                <div class="col-12 d-flex justify-content-center">
+                                    <%= link_to "Edit User",edit_user_path(@user), class: "btn btn-pill-left btn-info"%>
+                                    <%= link_to raw("Delete User"),
+                                        user_path(@user), class: "btn btn-pill-right btn-danger",
+                                        data: { confirm_swal: '', remote: true, method: 'DELETE' }
                                     %>
                                 </div>
                             </div>
