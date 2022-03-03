@@ -1,6 +1,6 @@
 <div class="unwrap">
     <% if @cover_photo.attached? %>
-        <div style="background-image: url(<%= url_for(@admin.avatar) %>)" class="bg-cover">
+        <div style="background-image: url(<%= url_for(@cover_photo) %>)" class="bg-cover">
     <% else %>
         <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
     <% end %>

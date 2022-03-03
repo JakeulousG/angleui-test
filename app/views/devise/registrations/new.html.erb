@@ -77,6 +77,18 @@
                                     ], selected: f.object.role), {}, class: "custom-select"
                                 %>
             </div>
+            <div class="form-group">
+                <%= f.label :avatar, class: "text-muted" %>
+                <div class="col-xl-12">
+                    <%= f.file_field :avatar, class: "form-control filestyle", classbutton:"btn btn-secondary", lassinput:"form-control inline", icon:"&lt;span class='fa fa-upload mr'&gt;&lt;/span&gt;"%>
+                </div>
+            </div>
+            <div class="form-group">
+                <%= f.label :cover_photo, class: "text-muted" %>
+                <div class="col-xl-12">
+                    <%= f.file_field :cover_photo, class: "form-control filestyle", classbutton:"btn btn-secondary", lassinput:"form-control inline", icon:"&lt;span class='fa fa-upload mr'&gt;&lt;/span&gt;"%>
+                </div>
+            </div>
             <%= f.submit label: "Create Account", class:"btn btn-block btn-primary mt-3" %>
         <% end %>
         
