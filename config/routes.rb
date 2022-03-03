@@ -116,5 +116,5 @@ Rails.application.routes.draw do
   get '/api/xeditable-groups' => 'api#xeditablegroups'
 
   # the rest goes to root
-  # get '*path' => redirect('/')
+   get '*path' => redirect('/')
 end
