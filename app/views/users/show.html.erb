@@ -1,7 +1,15 @@
 <div class="unwrap">
-    <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
+    <% if @cover_photo.attached? %>
+        <div style="background-image: url(<%= url_for(@cover_photo) %>)" class="bg-cover">
+    <% else %>
+        <div style="background-image: url(<%= asset_path 'angle/profile-bg.jpg' %>)" class="bg-cover">
+    <% end %>
         <div class="p-4 text-center text-white">
-            <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
+            <% if @avatar.attached? %>
+                <%= image_tag @avatar, class:"img-thumbnail rounded-circle thumb128"%>
+            <% else %>
+                <img class="img-thumbnail rounded-circle thumb128" src="<%= image_path('angle/user/09.jpg') %>" alt="Image" />
+            <% end %>
             <h3 class="m-0"><%= @user.name %></h3>
             <p><%= @user.email%></p>
         </div>

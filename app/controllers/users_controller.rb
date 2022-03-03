@@ -21,15 +21,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @avatar = @user.avatar
+    @cover_photo = @user.cover_photo
   end
 
   def index
-    @users = User.all.order(updated_at: :desc)
+    @users = User.all.order(created_at: :desc)
     @user = User.new
   end
 
   def edit
     @user = User.find(params[:id])
+    @avatar = @user.avatar
+    @cover_photo = @user.cover_photo
   end
   
   def update
@@ -50,6 +54,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :avatar, :cover_photo)
   end
 end

@@ -3,7 +3,11 @@
             <div class="card card-default">
                 <div class="card-body text-center">
                     <div class="py-4">
-                        <img class="img-fluid rounded-circle img-thumbnail thumb96" src="<%= image_path('angle/user/02.jpg') %>" alt="Contact" />
+                        <% if @avatar.attached? %>
+                            <%= image_tag @avatar, class:"img-thumbnail rounded-circle thumb128"%>
+                        <% else %>
+                            <img class="img-fluid rounded-circle img-thumbnail thumb96" src="<%= image_path('angle/user/09.jpg') %>" alt="Contact" />
+                        <% end %>                        
                     </div>
                     <h3 class="m-0 text-bold"><%= @user.name %></h3>
                     <div class="my-3">
@@ -24,11 +28,14 @@
                 <div class="col-12 col-sm-10">
                     <%= render 'form' %>
                     <div class="text-right">
-                        <%= button_to "Delete Account",
+                        <%= link_to "Delete Account",
                         user_path(@user),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' },
+                        data: { confirm_swal: '', remote: true, method: 'DELETE' },
                         class:"text-muted btn btn-danger text-white" %>
+
+                        <%= link_to "Back",
+                        users_path(),
+                        class:"text-muted btn btn-purple text-white" %>
                     </div>
                 </div>
             </div>
