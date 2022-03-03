@@ -45,11 +45,7 @@
                     <td> 
                         <%= link_to "View", admin_path(admin),class:"btn btn-primary"%>
                         <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin" && admin.role != "Super Admin" %>
-                           <% if current_admin.id == admin.id %>
-                              <%= link_to "Edit", edit_admin_registration_path, class: "btn btn-info" %>
-                           <% else %>
-                              <%= link_to "Edit", edit_admin_path(admin), class: "btn btn-info" %>
-                           <% end %>
+                           <%= link_to "Edit", edit_admin_path(admin), class: "btn btn-info" %>
                            <%= link_to "Delete", admin_path(admin), class: "btn btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' }  %>
                         <% end %>
                     </td>
