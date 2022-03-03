@@ -24,7 +24,7 @@
         "@rails/actioncable": "6.1.4",
         "@rails/activestorage": "6.1.4",
         "@rails/ujs": "6.1.4",
-        "@rails/webpacker": "^5.4.3",
+        "@rails/webpacker": "4.3.0",
         "@ttskch/select2-bootstrap4-theme": "1.5.2",
         "animate.css": "3.7.2",
         "bootstrap": "4.6.0",
