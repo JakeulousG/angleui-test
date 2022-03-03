@@ -11,7 +11,11 @@
                   <!-- User picture-->
                   <div class="user-block-picture">
                      <div class="user-block-status">
-                        <img src="<%= image_path('angle/user/02.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail rounded-circle" />
+                        <% if current_admin.avatar.attached? %>
+                           <%= image_tag current_admin.avatar, class:"img-thumbnail rounded-circle", width:100, height:100 %>
+                        <% else %>
+                           <img src="<%= image_path('angle/user/02.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail rounded-circle" />
+                        <% end %>
                         <div class="circle circle-success circle-lg"></div>
                      </div>
                   </div>

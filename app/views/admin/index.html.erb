@@ -35,21 +35,28 @@
                </tr>
             </thead>
             <tbody>
-                <% @admins.each do |admin| %>
-                <tr>
-                    <td><%= admin.id %></td>
-                    <td><%= admin.name %></td>
-                    <td><%= admin.email %></td>
-                    <td><%= admin.bio %></td>
-                    <td><%= admin.role %></td>
-                    <td> 
-                        <%= link_to "View", admin_path(admin),class:"btn btn-primary"%>
-                        <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin" && admin.role != "Super Admin" %>
-                           <%= link_to "Edit", edit_admin_path(admin), class: "btn btn-info" %>
-                           <%= link_to "Delete", admin_path(admin), class: "btn btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' }  %>
-                        <% end %>
-                    </td>
-                </tr>
+               <% @admins.each do |admin| %>
+                  <tr>
+                     <td><%= admin.id %></td>
+                     <td>
+                        <% if admin.avatar.attached? %>
+                           <%= image_tag admin.avatar, class:"img-thumbnail rounded-circle", width: 60, height: 60%>
+                        <% else %>
+                           <img src="<%= image_path('angle/user/03.jpg') %>" alt="Avatar" width="60" height="60" class="img-thumbnail rounded-circle" />
+                        <% end %> &nbsp;
+                        <%= admin.name %>
+                     </td>
+                     <td><%= admin.email %></td>
+                     <td><%= admin.bio %></td>
+                     <td><%= admin.role %></td>
+                     <td> 
+                           <%= link_to "View", admin_path(admin),class:"btn btn-primary"%>
+                           <% if current_admin.role == "Super Admin"  || current_admin.role == "Admin" && admin.role != "Super Admin" %>
+                              <%= link_to "Edit", edit_admin_path(admin), class: "btn btn-info" %>
+                              <%= link_to "Delete", admin_path(admin), class: "btn btn-danger", data: { confirm_swal: '', remote: true, method: 'DELETE' }  %>
+                           <% end %>
+                     </td>
+                  </tr>
                <% end %>
             </tbody>
          </table>
