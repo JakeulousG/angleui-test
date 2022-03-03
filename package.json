@@ -2,7 +2,7 @@
     "name": "angle",
     "version": "0.0.0",
     "engines": {
-        "node": "14.x"
+        "node": "14.19.0"
     },
     "description": "Angle - Bootstrap Admin Template",
     "author": "@themicon_co",
