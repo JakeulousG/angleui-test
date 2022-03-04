@@ -15,11 +15,8 @@ class Admins::SessionsController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}")
     respond_to do |format|
       if sign_in(resource_name, resource)
-        message = I18n.t('devise.sessions.signed_in')
+        set_flash_message!(:notice, :signed_in)
         format.js { render js: "window.location.href = '/'" }
-      else
-        message = I18n.t('devise.failure.not_found_in_database')
-        format.js { render  "#{resource_name}/sign_in_failure" }
       end
     end
   end
