@@ -15,12 +15,8 @@ class Admins::SessionsController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}")
     sign_in(resource_name, resource)
     message = I18n.t('devise.sessions.signed_in')
-    if request.xhr?
-      render :json => {:success => true, :login => true, :data => {:message => message}}
-    else
-      respond_to do |format|
-        format.html {redirect_to admins_sign_in_path}
-      end
+    respond_to do |format|
+      format.js { render js: "window.location.href = '/'" }
     end
   end
 
@@ -38,6 +34,7 @@ class Admins::SessionsController < Devise::SessionsController
       format.html {redirect_to '/users/sign_in'}
     end
   end
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
