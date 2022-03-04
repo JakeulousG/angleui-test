@@ -25,7 +25,7 @@ module Angle
     # config.i18n.default_locale = :de
 
     config.assets.initialize_on_precompile = false
-
+    config.autoload_paths += %W(#{config.root}/lib)
     config.assets.precompile += %w( base.css )
     # precompile themes
     config.assets.precompile += ['angle/themes/theme-a.css',

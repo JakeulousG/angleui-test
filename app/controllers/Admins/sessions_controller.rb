@@ -13,27 +13,17 @@ class Admins::SessionsController < Devise::SessionsController
   def create
     session['user_path'] = params[:admin]
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}")
-    sign_in(resource_name, resource)
-    message = I18n.t('devise.sessions.signed_in')
     respond_to do |format|
-      format.js { render js: "window.location.href = '/'" }
+      if sign_in(resource_name, resource)
+        message = I18n.t('devise.sessions.signed_in')
+        format.js { render js: "window.location.href = '/'" }
+      else
+        message = I18n.t('devise.failure.not_found_in_database')
+        format.js { render  "#{resource_name}/sign_in_failure" }
+      end
     end
   end
 
-  def failure
-    user = User.find_by_email(session['user_auth'][:email])
-     message = I18n.t('devise.failure.invalid')
-      if user =! nil || user.active_for_authentication?
-        flash[:error]= message unless request.xhr?
-     else
-       flash[:error]= user.inactive_message unless request.xhr?
-       message = user.inactive_message    
-      end
-    respond_to do |format|
-      format.json {render :json => {:authentication => 'failure', :data => {:message => message, :cause => 'invalid'} } }
-      format.html {redirect_to '/users/sign_in'}
-    end
-  end
 
   # DELETE /resource/sign_out
   # def destroy
