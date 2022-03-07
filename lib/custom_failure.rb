@@ -1,6 +1,6 @@
 class CustomFailure < Devise::FailureApp
     def redirect_url
-        new_admin_session_path
+        new_admin_session_path(:subdomain => 'secure', :format => :html)
     end
   
     def respond
